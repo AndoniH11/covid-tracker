@@ -10,6 +10,7 @@ class Chart extends React.Component{
 
     async componentDidMount(){
         const fetchAPI = await fetchDailyData();
+        console.log(fetchAPI)
         this.setState({
             dailyData: fetchAPI
         })
@@ -18,29 +19,6 @@ class Chart extends React.Component{
     render(){
         const {dailyData} = this.state
         const {data: {confirmed, recovered, deaths}, country} = this.props
-
-        const lineChart = (
-            dailyData.length != 0 ? 
-               (
-                   <Line className='grafico'
-                        data={{
-                            labels: dailyData.map(({date}) => date),
-                            datasets: [{
-                                data: dailyData.map(({confirmed}) => confirmed),
-                                label: 'Contagiados',
-                                borderColor: '#8ACA2B',
-                                fill: true
-                            }, {
-                                data: dailyData.map(({deaths}) => deaths),
-                                label: 'Muertes',
-                                borderColor: 'rgb(209, 53, 53)',
-                                backgroundColor: 'rgba(209, 53, 53, 0.5)',
-                                fill: true,
-                            }]
-                        }}
-                    />
-               ) : null
-        )
 
         const barChart = (
             confirmed ? (
@@ -68,7 +46,7 @@ class Chart extends React.Component{
 
         return(
             <div className='grafico-container'>
-               {country ? barChart : lineChart}
+               {barChart}
             </div>
 
 
