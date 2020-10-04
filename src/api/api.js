@@ -21,25 +21,9 @@ export const fetchData = async (country) => {
         }
         return modifiedData
     } catch (error) {
-        alert('Lo sentimos. Parece que se ha caido el servidor API. Por favor, vuelve a intentarlo en unos minutos.')
+        alert('Lo sentimos 1. Parece que se ha caido el servidor API. Por favor, vuelve a intentarlo en unos minutos.')
     }
 
-}
-
-export const fetchDailyData = async () => {
-
-    try {
-        const { data } = await axios.get(`${url}/daily`);
-        const modifiedData = data.map((dailyData) => ({
-            confirmed: dailyData.confirmed.total,
-            deaths: dailyData.deaths.total,
-            date: dailyData.reportDate
-        }))
-        return modifiedData
-
-    } catch (error) {
-        alert('Lo sentimos. Parece que se ha caido el servidor API. Por favor, vuelve a intentarlo en unos minutos.')
-    }
 }
 
 export const fetchCountries = async () => {
@@ -48,6 +32,6 @@ export const fetchCountries = async () => {
         return data
 
     } catch (error) {
-        alert('Lo sentimos. Parece que se ha caido el servidor API. Por favor, vuelve a intentarlo en unos minutos.')
+        alert('Lo sentimos 3. Parece que se ha caido el servidor API. Por favor, vuelve a intentarlo en unos minutos.')
     }
 }

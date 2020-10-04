@@ -1,6 +1,5 @@
 import React from 'react';
-import {fetchDailyData} from '../api/api'
-import {Line, Bar } from 'react-chartjs-2';
+import { Bar } from 'react-chartjs-2';
 
 class Chart extends React.Component{
 
@@ -8,16 +7,7 @@ class Chart extends React.Component{
         dailyData: []
     }
 
-    async componentDidMount(){
-        const fetchAPI = await fetchDailyData();
-        console.log(fetchAPI)
-        this.setState({
-            dailyData: fetchAPI
-        })
-    }
-
     render(){
-        const {dailyData} = this.state
         const {data: {confirmed, recovered, deaths}, country} = this.props
 
         const barChart = (
